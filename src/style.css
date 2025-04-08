@@ -1,18 +1,199 @@
-/* No consistency in CSS classes, inline styles dominate */
-body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+:root {
+  --padding-1: 4px;
+  --padding-2: 8px;
+  --padding-3: 16px;
+  --padding-4: 32px;
+  --primary-color: #007bff;
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --dark-bg: #121212;
+  --dark-text: #f8f9fa;
 }
 
-header {
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
   text-align: center;
-  padding: 10px;
-  background-color: #e0e0e0;
+  margin-bottom: var(--padding-3);
+}
+
+h2 {
+  font-size: clamp(18px, 4vw, 24px);
+  margin: var(--padding-1) 0;
+}
+
+h3 {
+  font-size: 18px;
+  color: var(--primary-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-3);
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: var(--padding-3);
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+img {
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#hero, #recommended-products, #faq {
+  padding: var(--padding-4);
+  text-align: center;
+}
+
+#hero {
+  display: flex;
+  justify-content: center;
+  gap: var(--padding-3);
+}
+
+.category {
+  flex: 1;
+  max-width: 250px;
+  background: white;
+  padding: var(--padding-3);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.category:hover {
+  transform: scale(1.05);
+}
+
+.shop-button {
+  display: inline-block;
+  padding: var(--padding-2) var(--padding-3);
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.shop-button:hover {
+  background: darkblue;
+}
+
+#recommended-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--padding-3);
 }
 
 .product {
-  border: 1px solid black;
-  margin: 10px;
+  background: white;
+  padding: var(--padding-3);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#faq {
+  background-color: #eee;
+  padding: var(--padding-4);
+}
+
+.faq-item {
+  margin-bottom: var(--padding-3);
+}
+
+.faq-item a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.faq-item a:hover {
+  text-decoration: underline;
+}
+
+
+.logo {
+  font-size: 50px;
+  font-family: bold;
+}
+
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-mode * {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+body.dark-mode button, body.dark-mode .shop-button {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+body.dark-mode button:hover, body.dark-mode .shop-button:hover {
+  background-color: darkblue !important;
+}
+
+button#theme-toggle {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
   padding: 10px;
-  width: 300px; /* Not responsive */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button#theme-toggle:hover {
+  background-color: darkblue;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+  }
 }
