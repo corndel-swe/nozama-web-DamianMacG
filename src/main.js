@@ -3,3 +3,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   const data = await res.json()
   console.log(data)
 })
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
